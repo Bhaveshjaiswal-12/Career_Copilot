@@ -10,35 +10,44 @@ Career Copilot is a production-grade, full-stack AI career preparation platform 
 
 ### 1. Landing Page & Product Overview
 Clean, modern entry experience with step-by-step feature breakdown and dynamic dashboard navigation.
-![Landing Page & Product Overview](docs/images/landing_hero.png)
+![Landing Page & Product Overview]<img width="1912" height="988" alt="image" src="https://github.com/user-attachments/assets/6e7771f7-8141-4f1e-a3eb-1fa2af52dbb9" />
+
+
 
 ### 2. Sign In & Session Access
 Secure authentication with JWT HTTP-only cookies, password visibility toggle, and credential validation.
-![Sign In Experience](docs/images/login.png)
+![Sign In Experience]<img width="1903" height="972" alt="image" src="https://github.com/user-attachments/assets/af1bf096-6254-4463-a8e5-bf93dc509bee" />
+
 
 ### 3. Account Registration & Onboarding
 Intuitive registration flow guiding candidates into personalized interview preparation and ATS resume tailoring.
-![Create Account](docs/images/register.png)
+![Create Account]<img width="1912" height="962" alt="image" src="https://github.com/user-attachments/assets/165b1a9a-6ae3-42b6-9ddd-e22effac8e01" />
+
 
 ### 4. Unified Career Dashboard
 Track interview analyses, job compatibility trends, profile strength gauges, and recent reports in one cohesive workspace.
-![Unified Career Dashboard](docs/images/dashboard.png)
+![Unified Career Dashboard]<img width="1912" height="990" alt="image" src="https://github.com/user-attachments/assets/e0fa4036-62e9-4b3c-9721-7db199145b3f" />
+
 
 ### 5. Multi-Step Analysis Wizard
 Upload PDF resumes or paste plain text, configure target roles, and input job descriptions for deep AI parsing.
-![Multi-Step Analysis Wizard](docs/images/new_analysis.png)
+![Multi-Step Analysis Wizard]<img width="1910" height="973" alt="image" src="https://github.com/user-attachments/assets/8207cffc-e86f-4df8-ae75-9ba1052b540f" />
+
 
 ### 6. Detailed Interview & Skill Gap Report
 View granular compatibility ratings, candidate strengths, areas for improvement, skill gap priority meters, technical and behavioral interview questions, and a 7-day preparation roadmap.
-![Detailed Interview & Skill Gap Report](docs/images/report_analysis.png)
+![Detailed Interview & Skill Gap Report]<img width="1914" height="987" alt="image" src="https://github.com/user-attachments/assets/d9b828cf-cf5f-421d-acd7-f8d87d29d446" />
+
 
 ### 7. Candidate Profile & Discovery Preferences
 Manage career preferences, target roles, preferred work modes, contact information, education, and skill tags that calibrate job compatibility scores.
-![Candidate Profile & Discovery Preferences](docs/images/profile.png)
+![Candidate Profile & Discovery Preferences]<img width="1917" height="988" alt="image" src="https://github.com/user-attachments/assets/05ec3007-4f36-4feb-8452-afd8cd5f3e88" />
+
 
 ### 8. Settings, Security & Data Portability
 Manage authentication credentials, password updates, JSON data export, and account retention controls.
-![Settings & Security](docs/images/settings.png)
+![Settings & Security]<img width="1902" height="989" alt="image" src="https://github.com/user-attachments/assets/00b12fea-2f7f-4add-974b-f6a197a70ae0" />
+
 
 ---
 
