@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+/* =========================================================
+   PREMIUM LAVENDER + PURPLE + SOFT WHITE DESIGN SYSTEM
+   Design Tokens:
+   - Main background:       #F8F7FC
+   - Secondary background:  #F1EDF9
+   - Main card surface:     #FFFFFF
+   - Soft lavender surface: #F2EDFC
+   - Hover surface:         #EAE2FA
+   - Main purple:           #6845C5
+   - Deep purple:           #49316F
+   - Light purple:          #B69AF5
+   - Lavender accent:       #DDD0FF
+   - Main text:             #26213A
+   - Secondary text:        #716B85
+   - Muted text:            #918BA2
+   - Borders:               #E7E1F1
+   - Focus ring:            #9C83EC
+   - Success:               #247A57
+   - Warning:               #94621B
+   - Error:                 #B83A52
+   ========================================================= */
+
+@theme {
+  --color-background: #F8F7FC;
+  --color-background-secondary: #F1EDF9;
+  --color-surface: #FFFFFF;
+  --color-surface-lavender: #F2EDFC;
+  --color-surface-hover: #EAE2FA;
+
+  --color-primary: #6845C5;
+  --color-primary-strong: #49316F;
+  --color-primary-light: #B69AF5;
+  --color-primary-soft: #DDD0FF;
+
+  --color-text-primary: #26213A;
+  --color-text-secondary: #716B85;
+  --color-text-muted: #918BA2;
+  --color-border: #E7E1F1;
+  --color-focus-ring: #9C83EC;
+
+  --color-success: #247A57;
+  --color-warning: #94621B;
+  --color-error: #B83A52;
+
+  /* Aliases for semantic backward compatibility */
+  --color-deep-bg: #F8F7FC;
+  --color-bg-card: #FFFFFF;
+  --color-text-strong: #26213A;
+  --color-text: #26213A;
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+:root {
+  --background: #F8F7FC;
+  --background-secondary: #F1EDF9;
+
+  --surface: #FFFFFF;
+  --surface-lavender: #F2EDFC;
+  --surface-hover: #EAE2FA;
+
+  --primary: #6845C5;
+  --primary-strong: #49316F;
+  --primary-light: #B69AF5;
+  --primary-soft: #DDD0FF;
+
+  --text-primary: #26213A;
+  --text-secondary: #716B85;
+  --text-muted: #918BA2;
+
+  --border: #E7E1F1;
+  --focus-ring: #9C83EC;
+
+  --success: #247A57;
+  --warning: #94621B;
+  --error: #B83A52;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid #9C83EC;
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: #DDD0FF;
+  color: #26213A;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F7FC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DDD0FF;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B69AF5;
+}
+
+/* =========================================================
+   GLASSMORPHISM & TRANSLUCENT SURFACES
+   ========================================================= */
+
+.glass-surface {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(231, 225, 241, 0.95);
+  box-shadow: 0 8px 28px rgba(73, 49, 111, 0.06);
+}
+
+.glass-lavender {
+  background: rgba(242, 237, 252, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(221, 208, 255, 0.85);
+  box-shadow: 0 8px 24px rgba(104, 69, 197, 0.05);
+}
+
+.card-surface {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E1F1;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px -2px rgba(73, 49, 111, 0.04);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-surface:hover {
+  border-color: #B69AF5;
+  box-shadow: 0 8px 28px -4px rgba(73, 49, 111, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Form input fields */
+.input-field {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E1F1;
+  color: #26213A;
+  border-radius: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.input-field::placeholder {
+  color: #918BA2;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #6845C5;
+  box-shadow: 0 0 0 3px rgba(156, 131, 236, 0.2);
+}
+
+.input-field:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #F1EDF9;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #6845C5;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1.125rem;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(104, 69, 197, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #5736AE;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(104, 69, 197, 0.32);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  background-color: #49316F;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: #26213A;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.5rem 1.125rem;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid #E7E1F1;
+  transition: all 160ms ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(73, 49, 111, 0.03);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #F2EDFC;
+  border-color: #DDD0FF;
+  color: #49316F;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles for Resume Export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, nav, aside, footer, button, .no-print {
+    display: none !important;
+  }
+  #resume-preview {
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  @page {
+    margin: 15mm;
+    size: A4;
+  }
+}
