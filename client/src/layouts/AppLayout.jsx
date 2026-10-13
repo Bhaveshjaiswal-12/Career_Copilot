@@ -51,7 +51,7 @@ function SidebarContent({ onClose }) {
       {/* Brand Header */}
       <div className="flex items-center justify-between px-5 h-16 border-b border-[#E7E1F1]">
         <Link
-          to="/dashboard"
+          to="/"
           className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9C83EC] rounded-xl p-1"
           onClick={onClose}
         >

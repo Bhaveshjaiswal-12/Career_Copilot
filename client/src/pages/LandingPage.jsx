@@ -14,7 +14,9 @@ import {
   Upload,
   Shield,
   Briefcase,
+  LayoutDashboard,
 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext.jsx';
 
 /* ─── Animated section wrapper ─── */
 function Reveal({ children, delay = 0 }) {
@@ -69,6 +71,8 @@ function WorkflowVisual() {
 
 /* ─── Nav ─── */
 function Navbar() {
+  const { isAuthenticated, user } = useAuth();
+
   return (
     <nav className="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur-md border-b border-[#E7E1F1]">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -86,18 +90,30 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/login"
-            className="text-xs font-semibold text-[#716B85] hover:text-[#26213A] transition-colors px-3 py-2"
-          >
-            Sign In
-          </Link>
-          <Link
-            to="/register"
-            className="text-xs bg-[#6845C5] text-white font-bold px-4 py-2 rounded-xl hover:bg-[#5736AE] transition-all shadow-xs"
-          >
-            Get Started
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              to="/dashboard"
+              className="text-xs bg-[#6845C5] text-white font-bold px-4 py-2 rounded-xl hover:bg-[#5736AE] transition-all shadow-xs flex items-center gap-1.5"
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span>Dashboard</span>
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-xs font-semibold text-[#716B85] hover:text-[#26213A] transition-colors px-3 py-2"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="text-xs bg-[#6845C5] text-white font-bold px-4 py-2 rounded-xl hover:bg-[#5736AE] transition-all shadow-xs"
+              >
+                Get Started
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
@@ -105,6 +121,8 @@ function Navbar() {
 }
 
 export default function LandingPage() {
+  const { isAuthenticated } = useAuth();
+
   const features = [
     {
       icon: BarChart3,
@@ -174,18 +192,38 @@ export default function LandingPage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <Link
-                  to="/register"
-                  className="inline-flex items-center gap-2 bg-[#6845C5] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#5736AE] transition-all text-sm shadow-xs hover:shadow"
-                >
-                  Start Free Analysis <ArrowRight className="w-4 h-4" />
-                </Link>
-                <a
-                  href="#how-it-works"
-                  className="inline-flex items-center gap-2 bg-white border border-[#E7E1F1] text-[#26213A] font-semibold px-5 py-3 rounded-xl hover:bg-[#F2EDFC] transition-colors text-sm shadow-2xs"
-                >
-                  View Workflow
-                </a>
+                {isAuthenticated ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      className="inline-flex items-center gap-2 bg-[#6845C5] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#5736AE] transition-all text-sm shadow-xs hover:shadow"
+                    >
+                      <LayoutDashboard className="w-4 h-4" />
+                      Go to Dashboard <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      to="/analyze"
+                      className="inline-flex items-center gap-2 bg-white border border-[#E7E1F1] text-[#26213A] font-semibold px-5 py-3 rounded-xl hover:bg-[#F2EDFC] transition-colors text-sm shadow-2xs"
+                    >
+                      New Analysis
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/register"
+                      className="inline-flex items-center gap-2 bg-[#6845C5] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#5736AE] transition-all text-sm shadow-xs hover:shadow"
+                    >
+                      Start Free Analysis <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <a
+                      href="#how-it-works"
+                      className="inline-flex items-center gap-2 bg-white border border-[#E7E1F1] text-[#26213A] font-semibold px-5 py-3 rounded-xl hover:bg-[#F2EDFC] transition-colors text-sm shadow-2xs"
+                    >
+                      View Workflow
+                    </a>
+                  </>
+                )}
               </div>
 
               {/* Trust badges */}
@@ -304,7 +342,7 @@ export default function LandingPage() {
           <Reveal delay={0.2}>
             <div className="pt-2">
               <Link
-                to="/register"
+                to={isAuthenticated ? "/jobs" : "/register"}
                 className="inline-flex items-center gap-2 bg-[#6845C5] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#5736AE] transition-all text-sm shadow-xs hover:shadow"
               >
                 Explore Live Jobs <ArrowRight className="w-4 h-4" />
@@ -325,8 +363,18 @@ export default function LandingPage() {
           </div>
           <p>&copy; {new Date().getFullYear()} Career Copilot. All rights reserved.</p>
           <div className="flex gap-4 font-medium">
-            <Link to="/login" className="hover:text-[#6845C5] transition-colors">Sign In</Link>
-            <Link to="/register" className="hover:text-[#6845C5] transition-colors">Register</Link>
+            {isAuthenticated ? (
+              <>
+                <Link to="/dashboard" className="hover:text-[#6845C5] transition-colors">Dashboard</Link>
+                <Link to="/analyze" className="hover:text-[#6845C5] transition-colors">New Analysis</Link>
+                <Link to="/jobs" className="hover:text-[#6845C5] transition-colors">Job Discovery</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="hover:text-[#6845C5] transition-colors">Sign In</Link>
+                <Link to="/register" className="hover:text-[#6845C5] transition-colors">Register</Link>
+              </>
+            )}
           </div>
         </div>
       </footer>
