@@ -1,6 +1,7 @@
 import { searchJobs } from '../services/job.service.js';
 import SavedJob from '../models/SavedJob.js';
 import User from '../models/User.js';
+import InterviewReport from '../models/InterviewReport.js';
 
 /**
  * Search and discover jobs
@@ -11,29 +12,46 @@ export async function getJobs(req, res, next) {
     const {
       query = '',
       location = '',
+      country = '',
       remote = 'all',
       sortBy = 'match',
       page = 1,
       limit = 20,
     } = req.query;
 
-    // Get fresh user profile for matching if authenticated
+    // Get fresh user profile and latest resume for location resolution & matching
     let userProfile = null;
+    let resumeData = null;
+
     if (req.user?._id) {
       const user = await User.findById(req.user._id).select('profile');
       if (user?.profile) {
         userProfile = user.profile;
+      }
+
+      // Fetch user's latest report containing resume data if available
+      const latestReport = await InterviewReport.findOne({
+        userId: req.user._id,
+        resumeData: { $ne: null },
+      })
+        .sort({ updatedAt: -1 })
+        .select('resumeData');
+
+      if (latestReport?.resumeData) {
+        resumeData = latestReport.resumeData;
       }
     }
 
     const results = await searchJobs({
       query: String(query),
       location: String(location),
+      country: String(country),
       remote: String(remote),
       sortBy: String(sortBy),
       page: Number(page) || 1,
       limit: Math.min(50, Math.max(1, Number(limit) || 20)),
       userProfile,
+      resumeData,
     });
 
     // Check which jobs are already saved by this user
