@@ -53,29 +53,74 @@ Manage authentication credentials, password updates, JSON data export, and accou
 
 ## ✨ Core Features
 
-### 🔍 Real-Time Job Discovery & Matching
-- **English-First Experience**: Detects non-English job postings (such as German listings from European feeds) and automatically translates titles and descriptions into professional English using Google Gemini, preserving company names, links, and salary figures.
-- **Inspect Original Listings**: Provides a transparent toggle to inspect original German listings when translated.
-- **Smart 4-Tier Country Resolution**:
-  1. *Priority 1*: Explicit user search filter / profile preference.
-  2. *Priority 2*: Explicit resume location (city, state, or country).
-  3. *Priority 3*: Confidently identified education institution location.
-  4. *Priority 4*: **India Default** (`IN`) fallback when no reliable country can be determined.
-- **Multi-Provider Tech Feeds**: Connects live authorized providers (Arbeitnow & Remotive) with remote scope categorization (Worldwide, India, Regional, On-site).
-- **Personalized Compatibility Scoring**: Heuristic scoring engine calculating transparent match percentages based on candidate skills, target role, work mode, and location relevance.
-- **Job Bookmarking**: Save and manage shortlisted positions with direct verified application links.
+# Career Copilot
 
-### 📄 AI Resume Analysis & ATS Builder
-- **PDF Resume Extraction**: Server-side parsing of uploaded PDF documents into raw and structured candidate profiles.
-- **Skill Gap Visualizer**: Categorizes competencies into *Strong*, *Partial*, and *Missing* with priority ratings and learning suggestions.
-- **Interview Preparation Engine**:
-  - **Technical Questions**: Curated by difficulty, topic, core intent, and expandable expected answer points.
-  - **Behavioral Questions**: Structured around the STAR methodology (Situation, Task, Action, Result) with note-saving capabilities.
-- **7-Day Actionable Roadmap**: Daily milestone breakdown with estimated time, objectives, and interactive completion tracking.
-- **Targeted ATS Resume Synthesis**: Generates ATS-friendly resumes tailored to the target job description.
-- **Interactive In-Place Editor**: Live editing of headline, contact info, summary, experience, projects, education, and skills.
-- **Live ATS Score Breakdown**: Computes keyword match, skill alignment, experience relevance, and format compliance.
-- **Clean PDF Export**: Uses PDFKit and print stylesheets for clean, ATS-compliant PDF downloads.
+**Career Copilot** is an AI-powered career preparation platform that helps job seekers understand how their resume aligns with a target role, identify skill gaps, prepare for interviews, generate tailored resumes, and discover job opportunities.
+
+The application combines a React frontend with a Node.js/Express backend, MongoDB for persistence, and Google's Gemini API for AI-powered career insights.
+
+> **Project status:** This README describes the features and integrations currently identified in the project context. Verify environment-variable names, npm scripts, and provider configuration against the actual repository before publishing this file.
+
+## Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [How It Works](#how-it-works)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Job Discovery](#job-discovery)
+- [Security and Privacy](#security-and-privacy)
+- [Testing and Quality Checks](#testing-and-quality-checks)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+
+## Features
+
+### Resume and Job Description Analysis
+
+- Upload a resume and provide a target job description.
+- Parse resume content for analysis.
+- Generate an AI-assisted candidate summary and role summary.
+- Identify matching skills, partial matches, and potential skill gaps.
+- Provide a compatibility score based on the available resume and role information.
+- Highlight strengths and areas to improve.
+
+### Interview Preparation
+
+- Generate role-specific technical interview questions.
+- Generate behavioral interview questions.
+- Provide a structured preparation roadmap based on the analysis.
+- Save analysis reports so users can revisit their preparation materials.
+
+### Tailored Resume Generation
+
+- Generate a resume tailored to a target role using the available profile and analysis data.
+- Produce a downloadable PDF using the existing resume-generation flow.
+- Support more focused application preparation without replacing the user's source resume silently.
+
+### Reports and Dashboard
+
+- View previous analysis reports.
+- Open report details, including match insights and interview questions.
+- Track available analysis and resume statistics.
+- See recent reports and match-score history when enough real data exists.
+
+### Profile and Account Management
+
+- Manage career profile information and skills.
+- Use saved profile information to improve analysis and recommendations.
+- Access protected user-specific reports and resources.
+- Manage account/session settings supported by the application.
+
+### Job Discovery
+
+- Search job listings from the providers configured in the backend.
+- Review job title, company, location, and other metadata supplied by the source.
+- Follow the original external application link.
+- Save jobs if that capability is enabled in the current implementation.
+
+**Provider note:** The current project context identifies integrations with Arbeitnow and Remotive. Their coverage and location behavior differ, so results may include international or remote opportunities. Do not assume that all remote roles accept applicants from India. An India-focused provider such as JSearch or Adzuna should only be described as integrated after it has actually been configured and tested.
 
 ### 🎨 Design System & Aesthetics
 - **Modern Lavender & Purple Theme**: Curated palette utilizing `#6845C5` primary accents, `#F8F7FC` neutral backgrounds, subtle `#E7E1F1` borders, and `#F2EDFC` interactive chips.
