@@ -61,20 +61,6 @@ The application combines a React frontend with a Node.js/Express backend, MongoD
 
 > **Project status:** This README describes the features and integrations currently identified in the project context. Verify environment-variable names, npm scripts, and provider configuration against the actual repository before publishing this file.
 
-## Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [How It Works](#how-it-works)
-- [Architecture](#architecture)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Job Discovery](#job-discovery)
-- [Security and Privacy](#security-and-privacy)
-- [Testing and Quality Checks](#testing-and-quality-checks)
-- [Troubleshooting](#troubleshooting)
-- [Roadmap](#roadmap)
-
 ## Features
 
 ### Resume and Job Description Analysis
