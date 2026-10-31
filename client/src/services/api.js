@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://career-copilot-728b.onrender.com//api',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
