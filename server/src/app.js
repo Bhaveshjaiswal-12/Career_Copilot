@@ -10,7 +10,13 @@ const app = express();
 
 // --------------- Security middleware ---------------
 app.use(helmet());
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://careercopilots-ai.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 // --------------- Rate limiting ---------------
 const limiter = rateLimit({
